@@ -17,3 +17,7 @@ export const trappedWater = (heights: readonly number[]) => {
 
   return columns.reduce((total, column) => total + column(), 0);
 };
+
+if (import.meta.main) {
+  console.log(trappedWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+}

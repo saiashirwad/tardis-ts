@@ -15,3 +15,7 @@ export const countdown = (steps: readonly string[]) => {
 
   return lines.map((line) => line());
 };
+
+if (import.meta.main) {
+  console.log(countdown(["ignition", "clamps release", "liftoff"]));
+}

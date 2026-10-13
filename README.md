@@ -19,7 +19,16 @@ export const neighbors = <A>(xs: readonly A[]) => {
   return rows.map(([previous, x, next]) => [previous, x, next()]);
 };
 
-console.log(neighbors([1, 2, 3])); // [[undefined, 1, 2], [1, 2, 3], [2, 3, undefined]]
+if (import.meta.main) {
+  console.log(neighbors([1, 2, 3]));
+}
+```
+
+```console
+$ bun neighbors.ts
+[
+  [ undefined, 1, 2 ], [ 1, 2, 3 ], [ 2, 3, undefined ]
+]
 ```
 
 ```ts
@@ -58,14 +67,21 @@ export const assemble = (program: readonly Instruction[]) => {
   return lines.map((line) => line());
 };
 
-console.log(assemble([
-  { label: "start" },
-  { op: "push" },
-  { jump: "end" },
-  { jump: "start" },
-  { label: "end" },
-  { op: "pop" },
-])); // ["0: push", "1: jump 3", "2: jump 0", "3: pop"]
+if (import.meta.main) {
+  console.log(assemble([
+    { label: "start" },
+    { op: "push" },
+    { jump: "end" },
+    { jump: "start" },
+    { label: "end" },
+    { op: "pop" },
+  ]));
+}
+```
+
+```console
+$ bun assembler.ts
+[ "0: push", "1: jump 3", "2: jump 0", "3: pop" ]
 ```
 
 ```ts
@@ -89,7 +105,14 @@ export const trappedWater = (heights: readonly number[]) => {
   return columns.reduce((total, column) => total + column(), 0);
 };
 
-console.log(trappedWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1])); // 6
+if (import.meta.main) {
+  console.log(trappedWater([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]));
+}
+```
+
+```console
+$ bun rainwater.ts
+6
 ```
 
 ```ts
@@ -114,8 +137,14 @@ export const thread = (posts: Iterable<string>) => {
   return numbered.map((post) => post());
 };
 
-console.log(thread(["time travel is real", "the proof is this numbering", "fin"]));
-// ["1/3 time travel is real", "2/3 the proof is this numbering", "3/3 fin"]
+if (import.meta.main) {
+  console.log(thread(["time travel is real", "the proof is this numbering", "fin"]));
+}
+```
+
+```console
+$ bun thread.ts
+[ "1/3 time travel is real", "2/3 the proof is this numbering", "3/3 fin" ]
 ```
 
 ```ts
@@ -141,7 +170,14 @@ export const secretSanta = (people: readonly string[]) => {
   return gifts.map(([giver, receiver]) => `${giver} → ${receiver()}`);
 };
 
-console.log(secretSanta(["Ann", "Bob", "Cat"])); // ["Ann → Bob", "Bob → Cat", "Cat → Ann"]
+if (import.meta.main) {
+  console.log(secretSanta(["Ann", "Bob", "Cat"]));
+}
+```
+
+```console
+$ bun santa.ts
+[ "Ann → Bob", "Bob → Cat", "Cat → Ann" ]
 ```
 
 ```ts
@@ -163,6 +199,12 @@ export const countdown = (steps: readonly string[]) => {
   return lines.map((line) => line());
 };
 
-console.log(countdown(["ignition", "clamps release", "liftoff"]));
-// ["T-2 ignition", "T-1 clamps release", "T-0 liftoff"]
+if (import.meta.main) {
+  console.log(countdown(["ignition", "clamps release", "liftoff"]));
+}
+```
+
+```console
+$ bun countdown.ts
+[ "T-2 ignition", "T-1 clamps release", "T-0 liftoff" ]
 ```

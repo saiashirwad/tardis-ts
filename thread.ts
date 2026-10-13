@@ -18,3 +18,7 @@ export const thread = (posts: Iterable<string>) => {
 
   return numbered.map((post) => post());
 };
+
+if (import.meta.main) {
+  console.log(thread(["time travel is real", "the proof is this numbering", "fin"]));
+}

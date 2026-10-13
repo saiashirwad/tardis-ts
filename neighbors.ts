@@ -17,3 +17,7 @@ export const neighbors = <A>(xs: readonly A[]) => {
 
   return rows.map(([previous, x, next]) => [previous, x, next()]);
 };
+
+if (import.meta.main) {
+  console.log(neighbors([1, 2, 3]));
+}

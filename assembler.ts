@@ -32,3 +32,14 @@ export const assemble = (program: readonly Instruction[]) => {
 
   return lines.map((line) => line());
 };
+
+if (import.meta.main) {
+  console.log(assemble([
+    { label: "start" },
+    { op: "push" },
+    { jump: "end" },
+    { jump: "start" },
+    { label: "end" },
+    { op: "pop" },
+  ]));
+}

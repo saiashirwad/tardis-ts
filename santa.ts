@@ -19,3 +19,7 @@ export const secretSanta = (people: readonly string[]) => {
 
   return gifts.map(([giver, receiver]) => `${giver} → ${receiver()}`);
 };
+
+if (import.meta.main) {
+  console.log(secretSanta(["Ann", "Bob", "Cat"]));
+}
