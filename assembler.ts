@@ -21,9 +21,11 @@ export const assemble = (program: readonly Instruction[]) => {
 
       const later = yield* backwards.get();
       yield* forwards.set({ address: address + 1, labels });
-      lines.push("op" in instruction
-        ? () => `${address}: ${instruction.op}`
-        : () => `${address}: jump ${labels[instruction.jump] ?? later()[instruction.jump]}`);
+      if ("op" in instruction) {
+        lines.push(() => `${address}: ${instruction.op}`);
+      } else {
+        lines.push(() => `${address}: jump ${labels[instruction.jump] ?? later()[instruction.jump]}`);
+      }
     }
     return lines;
   }).run({}, { address: 0, labels: {} });
