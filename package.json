@@ -1,0 +1,17 @@
+{
+  "name": "tardis-ts",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "mutate": "node node_modules/@stryker-mutator/core/bin/stryker.js run"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^10.0.0",
+    "@types/bun": "latest",
+    "fast-check": "^4.10.2"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  }
+}
